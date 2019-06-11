@@ -4,13 +4,14 @@ pipeline {
     stages {
         stage('Parallel steps') {
             parallel {
-                stage('Successful stage') {
+                stage('parallel stage 1 of 2 ') {
                     steps {
                         script {
                             try {
-                                sleep 10 
+                                sleepp 10 
                             } catch (e) {
                                 echo('detected failure: Successful stage')
+				echo "parallel stage 1 of 2" |mail -s "Failure" -r peter@iinet.net.au peterzhc66@hotmail.com
                                 throw(e)
                             }
                         }
